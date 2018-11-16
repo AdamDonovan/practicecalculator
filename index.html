@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+  <html>
+   <head>
+    <title>Calculator Thing</title>
+    <link href="https://fonts.googleapis.com/css?family=Changa+One" rel="stylesheet">
+   
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+   </head>
+
+   <style type="text/css">
+
+   body {
+   	font-family: 'Changa One', cursive;
+   	background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   	color: white;
+   	font-size: 4rem;
+   	margin: 4px;
+   }
+
+   p {
+   	text-align: right;
+    margin-top: 0px;
+    margin-bottom: 0px;
+   }
+
+   	button {
+    background-color: black;
+    border: 3px solid white;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-family: 'Changa One', cursive;
+    font-size: 2rem;
+    margin: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropShadow {
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.calculatorCase {
+	border: 6px solid white;
+	padding: 15px;
+	border-radius: 10px;
+	margin: 5% auto;
+	width: fit-content;
+	background-color: black;
+}
+
+.rowlength {
+	width: 126px;
+	height: 44px;
+	display: inline;
+}
+
+.clearButton {
+	width: 66%%;
+	display: inline;
+	padding: 15px 32px;
+}
+
+   </style>
+
+<body>
+	<div class="calculatorCase dropShadow">
+		<div>
+			<p id="demo">0</p>
+		</div>
+		<div class="rowlength">
+			<button onclick="myFunction(1)" type="button">1</button>
+			<button onclick="myFunction(2)" type="button">2</button>
+			<button onclick="myFunction(3)" type="button">3</button>
+		</div>
+	<br>
+		<div class="rowlength">
+			<button onclick="myFunction(4)" type="button">4</button>
+			<button onclick="myFunction(5)" type="button">5</button>
+			<button onclick="myFunction(6)" type="button">6</button>
+		</div>
+	<br>
+		<div class="rowlength">
+			<button onclick="myFunction(7)" type="button">7</button>
+			<button onclick="myFunction(8)" type="button">8</button>
+			<button onclick="myFunction(9)" type="button">9</button>
+		</div>
+	<br>
+		<div class="rowlength">
+			<button class="clearButton" onclick="clearFunction(7)" type="button">Clear</button>
+			<button onclick="minusFunction()" type="button">-</button>
+			<button onclick="multiplyFunction()" type="button">x</button>
+		</div>
+	</div>	
+
+	<script type="text/javascript">
+	   	var result = 0;
+	   	var minusTracker = false;
+	   	var multiplyTracker = false;
+
+
+	   	function myFunction(digit) {
+	   		if (minusTracker === false && multiplyTracker === false) {
+	   			document.getElementById("demo").innerHTML = result = result + digit; 
+	   		} else if (minusTracker === true && multiplyTracker === false) {
+	   			document.getElementById("demo").innerHTML = result = result + (digit * -1), minusTracker = false;
+	   		} else if  (minusTracker === false && multiplyTracker === true) {
+	   			document.getElementById("demo").innerHTML = result = result * digit, multiplyTracker = false;
+	   		} else if (minusTracker === true && multiplyTracker === true) {
+	   			document.getElementById("demo").innerHTML = result = result * (digit * -1), multiplyTracker = false, minusTracker = false;
+	   	    }else {
+	   			document.getElementById("demo").innerHTML = result = 'Error, bitch!', multiplyTracker = false;	
+	   		}
+	   	}
+
+	   	function clearFunction() {
+	   		document.getElementById("demo").innerHTML = result = 0;
+	   	}
+
+	   	function minusFunction(){
+	   		minusTracker = true;
+	   	}
+
+	   	function multiplyFunction() {
+	   		multiplyTracker = true;
+	   	}
+
+   	
+   </script>
+</body>
+</html>
